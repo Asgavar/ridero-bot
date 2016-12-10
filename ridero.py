@@ -31,7 +31,14 @@ email_field.send_keys(mail_address)
 send_button = browser.find_elements_by_class_name("info-text")[1].find_element_by_tag_name("button")
 send_button.click()
 
+time.sleep(5)
+
 browser.get(tempmail_url)
 
-# view_mail_button = browser.find_element_by_class_name("iconset set-full")
-# view_mail_button.click()
+time.sleep(3)
+view_mail_link = browser.find_element_by_partial_link_text("Misja")
+view_mail_link.click()
+
+time.sleep(3)
+confirmation_link = browser.find_element_by_partial_link_text("ridero.eu")
+confirmation_link.click()
