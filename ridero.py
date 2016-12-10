@@ -26,4 +26,12 @@ vote_by_email.click()
 time.sleep(2)   # j.w.
 email_field = browser.find_elements_by_class_name("p-inner")[1].find_element_by_tag_name("input")
 # TODO: zmienic zagniezdzone szukanie elementow na XPathy
+
 email_field.send_keys(mail_address)
+send_button = browser.find_elements_by_class_name("info-text")[1].find_element_by_tag_name("button")
+send_button.click()
+
+browser.get(tempmail_url)
+
+# view_mail_button = browser.find_element_by_class_name("iconset set-full")
+# view_mail_button.click()
