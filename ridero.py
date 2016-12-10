@@ -1,28 +1,24 @@
-# import re
+import time
+from selenium import webdriver
 
-# from robobrowser import RoboBrowser
-
-book_url = "https://ridero.eu/pl/books/bicie_serc/"   # ukryty, ale fizycznie przycisk juz tam jest xD
+book_url = "https://ridero.eu/pl/books/bicie_serc/"
 tempmail_url = "https://temp-mail.org/pl/"
 
+browser = webdriver.Firefox()
 
-# browser = RoboBrowser()
-#
-# browser.open(tempmail_url)
-#
-# address_field = browser.select("#mail")   # tag <input> o id = mail
-#
-# address_pattern = r"value=\".*\""   # wyrazenie regularne, szuka atrybutu value
-#
-# mail_address = re.findall(address_pattern, str(address_field))[0]   # zwraca liste z jednym elementem
-# mail_address = mail_address[7:len(mail_address)-1]   # wyciecie value= i zostawienie samej wartosci atrybutu
-#
-# print(mail_address)
+browser.get(tempmail_url)
 
-# browser.open(book_url)
+address_field = browser.find_element_by_id("mail")   # tag <input> o id = mail
+mail_address = address_field.get_attribute("value")
 
-# vote_button = browser.get_link(u"Zagłosuj na książkę")
+browser.get(book_url)
 
-# inp = browser.get_forms()
+vote_button = browser.find_element_by_tag_name("button")
+vote_button.click()
 
-# print(inp)
+voting_method_buttons = browser.find_element_by_class_name("votingButtons").find_elements_by_tag_name("input")
+
+vote_by_email = voting_method_buttons[2]
+
+time.sleep(5)   # zaczekaj piec sekund (zeby okienko mialo czas by wyskoczyc)
+vote_by_email.click()
