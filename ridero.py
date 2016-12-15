@@ -1,5 +1,10 @@
+import os
 import time
+from threading import Timer
 from selenium import webdriver
+
+t = Timer(60, os._exit, [0])   # chyba tylko w ten sposob wywala sie wszystkie watki naraz
+t.start()
 
 book_url = "https://ridero.eu/pl/books/bicie_serc/"
 tempmail_url = "https://temp-mail.org/pl/"
