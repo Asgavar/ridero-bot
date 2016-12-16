@@ -6,7 +6,7 @@ from selenium import webdriver
 t = Timer(60, os._exit, [0])   # chyba tylko w ten sposob wywala sie wszystkie watki naraz
 t.start()
 
-book_url = "https://ridero.eu/pl/books/bicie_serc/"
+book_url = "https://ridero.eu/pl/books/na_marginesie/"
 tempmail_url = "https://temp-mail.org/pl/"
 
 browser = webdriver.Firefox()
@@ -40,7 +40,7 @@ time.sleep(5)
 
 browser.get(tempmail_url)
 
-time.sleep(3)
+time.sleep(10)
 view_mail_link = browser.find_element_by_partial_link_text("Misja")
 view_mail_link.click()
 
