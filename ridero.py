@@ -47,3 +47,6 @@ view_mail_link.click()
 time.sleep(3)
 confirmation_link = browser.find_element_by_partial_link_text("ridero.eu")
 confirmation_link.click()
+
+time.sleep(5)
+browser.quit()   # zamyka sie i czeka do odliczenia 60 sekund
