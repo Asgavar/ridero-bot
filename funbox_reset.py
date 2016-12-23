@@ -1,9 +1,10 @@
+import sys
 import time
 from selenium import webdriver
 
-router_address = "http://<router ip>"
+router_address = sys.argv[1]   # 0 to nazwa pliku
 restart_page = router_address+"/supportRestart.html"
-password = "<password>"
+password = sys.argv[2]
 
 browser = webdriver.Firefox()
 
