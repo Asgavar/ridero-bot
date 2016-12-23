@@ -22,3 +22,5 @@ browser.get(restart_page)
 time.sleep(2)
 yes_button = browser.find_element_by_id("bt_yes")
 yes_button.click()
+
+browser.quit()
