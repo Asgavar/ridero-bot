@@ -1,6 +1,11 @@
+import os
 import sys
 import time
+from threading import Timer
 from selenium import webdriver
+
+t = Timer(60, os._exit, [255])   # jesli po drodze cos sie zawiesi
+t.start()
 
 router_address = sys.argv[1]   # 0 to nazwa pliku
 restart_page = router_address+"/supportRestart.html"
@@ -25,3 +30,5 @@ yes_button = browser.find_element_by_id("bt_yes")
 yes_button.click()
 
 browser.quit()
+
+os._exit(119)   # wszystko poszlo ok

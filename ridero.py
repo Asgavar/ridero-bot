@@ -3,7 +3,7 @@ import time
 from threading import Timer
 from selenium import webdriver
 
-t = Timer(60, os._exit, [0])   # chyba tylko w ten sposob wywala sie wszystkie watki naraz
+t = Timer(180, os._exit, [255])   # jesli po drodze cos sie zawiesi
 t.start()
 
 book_url = "https://ridero.eu/pl/books/na_marginesie/"
@@ -50,3 +50,5 @@ confirmation_link.click()
 
 time.sleep(5)
 browser.quit()   # zamyka sie i czeka do odliczenia 60 sekund
+
+os._exit(119)   # wszystko poszlo ok
