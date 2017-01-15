@@ -6,7 +6,7 @@ from selenium import webdriver
 t = Timer(180, os._exit, [255])   # jesli po drodze cos sie zawiesi
 t.start()
 
-book_url = "https://ridero.eu/pl/books/<url tutaj>"
+book_url = "https://ridero.eu/pl/books/na_marginesie"
 tempmail_url = "https://temp-mail.org/pl/"
 
 browser = webdriver.Firefox()
@@ -36,11 +36,18 @@ email_field.send_keys(mail_address)
 send_button = browser.find_elements_by_class_name("info-text")[1].find_element_by_tag_name("button")
 send_button.click()
 
-time.sleep(5)
+is_vote_approved = False
+while not is_vote_approved:
+    page = browser.page_source
+    is_vote_approved = "został wysłany" in str(page)
 
 browser.get(tempmail_url)
 
-time.sleep(10)
+did_email_come = False
+while not did_email_come:
+    page = browser.page_source
+    did_email_come = "Misja" in str(page)
+
 view_mail_link = browser.find_element_by_partial_link_text("Misja")
 view_mail_link.click()
 
@@ -49,6 +56,6 @@ confirmation_link = browser.find_element_by_partial_link_text("ridero.eu")
 confirmation_link.click()
 
 time.sleep(5)
-browser.quit()   # zamyka sie i czeka do odliczenia 60 sekund
+browser.quit()
 
 os._exit(119)   # wszystko poszlo ok
