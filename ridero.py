@@ -6,7 +6,7 @@ from selenium import webdriver
 t = Timer(180, os._exit, [255])   # jesli po drodze cos sie zawiesi
 t.start()
 
-book_url = "https://ridero.eu/pl/books/na_marginesie/"
+book_url = "https://ridero.eu/pl/books/<url tutaj>"
 tempmail_url = "https://temp-mail.org/pl/"
 
 browser = webdriver.Firefox()
